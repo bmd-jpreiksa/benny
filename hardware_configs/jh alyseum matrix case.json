@@ -88,13 +88,19 @@
 				"name" : "MIDIIN2 (LCXL3 1 MIDI)",
 				"driver" : "MIDIIN2 (LCXL3 1 MIDI)",
 				"substitute" : [ "LPD8 mk2" ],
-				"outputs" : 32,
+				"outputs" : 24,
 				"type" : "encoder",
 				"channel" : 16,
 				"first" : 77,
 				"scaling" : 1,
 				"columns" : 8,
 				"rows" : 3,
+                                "faders" :                            {
+                                        "type" : "potentiometer",
+                                        "channel" : 1,
+                                        "first" : 77,
+                                        "count" : 8
+                                },
 				"buttons" : 				{
 					"first" : 37,
 					"type" : "note",
