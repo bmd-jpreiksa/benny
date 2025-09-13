@@ -1,3 +1,22 @@
+10/9/25:
+- new 'autoconnect' feature: when creating a new block you can have it automatically connect to the block that was selected when you enter the menu. this happens if your hold shift while clicking your selected new block / while hitting enter to pick, or there's a config option that makes this happen even without shift held. also works if a single voice is selected.
+- when you drag to make a new connection, if you hold ctrl as you release the new connection starts off muted. useful for live patching..
+
+9/9/25:
+- on blocks that have buttons that set a value - eg buckets delay has a row of time buttons - these are able to be applied to just one voice if you select it before pressing the button.
+- main window opens at a more useable size by default.
+
+8/9/25:
+- **varispeed looper** adjusted, now with shortcut buttons to set length and change rate in useful ways, both of which make it easier to use as a basic looper.
+
+5/9/25:
+- adjusted project settings for faster initial load
+- improved 'make space' function: alt+shift + scroll to spread out all the blocks on the blocks page
+
+17/8/25:
+- new **midi.logic** and **utility.audio.logic** are blocks that perform all the classic logic functions: OR, AND, XOR, NAND.
+- **utility.spray** is a block that routes incoming notes to different outlets indexed by either note or velocity. useful for example, for turning a sequencer/clock progress counter into events at particular steps.
+
 2/8/25:
 - **seq.values** now lets you type lists of values in directly. hover your mouse over the lane you want to type into, then type, separating values by commas. eg c4,c#4,36,37,,,,2,3,127 followed by enter.
 

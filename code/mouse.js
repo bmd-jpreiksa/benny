@@ -278,7 +278,7 @@ function omouse(x,y,leftbutton,ctrl,shift,caps,alt,e){
 	if(usermouse.got_t==0){
 		if((displaymode=="blocks")||(displaymode=="block_menu")){
 			//i do manual hit detection while dragging a block because i couldn't work out how to make phys picker see things under the dragged block..
-			if((displaymode=="blocks") && (usermouse.last.left_button)) id = manual_hit_detection();
+			if((displaymode=="blocks") /*&& (usermouse.last.left_button)*/) id = manual_hit_detection();
 			if(id==null) id = picker_lookups(phys_picker_id);
 			if(id!=null) id = picker_hover_and_special(id);
 		}else if(displaymode=="flocks"){
@@ -500,28 +500,39 @@ function omouse(x,y,leftbutton,ctrl,shift,caps,alt,e){
 						if(usermouse.ids[0]=="block-menu-background"){
 							if(usermouse.clicked3d!="background_dragged") set_display_mode("blocks");
 						}else{
-							if(usermouse.clicked3d!="background_dragged"){
+							if(usermouse.clicked3d!="background_dragged" &&  blocks_menu[matrix_menu_index[usermouse.hover[1]]]){
 								var num = matrix_menu_index[usermouse.hover[1]];
-								if(num == undefined) error("\nhow 1?",usermouse.hover[1],num);
-								var type = blocks_menu[num].name;
-								if(sidebar.show_help==0) sidebar.show_help = 1;
-								
-								//post("menu click c3d="+usermouse.clicked3d+" ids1 = "+usermouse.ids[1]+" oid "+usermouse.oid+" hover "+usermouse.hover);
-								end_of_frame_fn = function(){
-									var r = new_block(type, Math.round(blocks_page.new_block_click_pos[0]), Math.round(blocks_page.new_block_click_pos[1]));
-									draw_block(r);
-									var bpw = (blocks_page.rightmost - blocks_page.leftmost);
-									var d = ((blocks_page.new_block_click_pos[0]-blocks_page.leftmost)/bpw)-(sidebar.x/mainwindow_width);
-									if(d > 0){
-										camera_position[0] += 1.5*d*bpw;
-										camera();
+								if(num != undefined){
+									var type = blocks_menu[num].name;
+									if(sidebar.show_help==0) sidebar.show_help = 1;
+									set_display_mode("blocks");
+									end_of_frame_fn = function(){
+										var r = new_block(type, Math.round(blocks_page.new_block_click_pos[0]), Math.round(blocks_page.new_block_click_pos[1]));
+										var bpw = (blocks_page.rightmost - blocks_page.leftmost);
+										var d = ((blocks_page.new_block_click_pos[0]-blocks_page.leftmost)/bpw)-(sidebar.x/mainwindow_width);
+										if(d > 0){
+											camera_position[0] += 1.5*d*bpw;
+											camera();
+										}
+										selected.block[r] = 1;
+										var t = draw_block(r);
+										if(blocks_page.was_selected!=null && (usermouse.shift || config.get("ALWAYS_AUTOCONNECT_IF_YOU_CAN"))){
+											getWiresPotentialConnection();
+											if(blocks_page.new_block_click_pos[1] > blocks.get("blocks["+blocks_page.was_selected+"]::space::y")){
+												build_new_connection_menu(r,blocks_page.was_selected,-1,(blocks_page.was_selected_voice!=null) ? blocks_page.was_selected_voice : -1);
+											}else{
+												build_new_connection_menu(blocks_page.was_selected,r,(blocks_page.was_selected_voice!=null) ? blocks_page.was_selected_voice : -1,-1);
+											}
+										} 
+										blocks_page.was_selected = null;
+										block_cubes++;
+										voice_cubes+=t[0];
+										write_blocks_matrix();
+										sidebar.scopes.voice = -1;
+										sidebar.selected_voice = -1;
+										redraw_flag.flag |= 8;
 									}
-									selected.block[r] = 1;
-									sidebar.scopes.voice = -1;
-									sidebar.selected_voice = -1;
-									redraw_flag.flag |= 8;
 								}
-								set_display_mode("blocks");
 							}
 						}
 						usermouse.clicked3d = -1;
@@ -550,7 +561,7 @@ function omouse(x,y,leftbutton,ctrl,shift,caps,alt,e){
 								var avx = blocks.get("blocks["+f_no+"]::space::x");
 								var avy = blocks.get("blocks["+f_no+"]::space::y") - 0.5;
 								var dy = blocks.get("blocks["+t_no+"]::space::y")-blocks.get("blocks["+f_no+"]::space::y");
-								if(dy<1.2) make_space(avx,avy,0.65);
+								if(dy<1.2) make_fisheye_space(avx,avy,0.55);
 								avy = blocks.get("blocks["+f_no+"]::space::y") - 1.25;
 								var num = matrix_menu_index[usermouse.hover[1]];
 								if(num == undefined) error("\nhow 3?",usermouse.hover[1],num);
@@ -1064,22 +1075,7 @@ function omouse(x,y,leftbutton,ctrl,shift,caps,alt,e){
 										potential_connection.replace("from::voice",tempfromvoice);
 										if(Array.isArray(wire_ends[wires_potential_connection]))wire_ends[wires_potential_connection][3] = -99.94;
 										if(wires_potential_connection==-1){
-											var csize = connections.getsize("connections");
-											var w=1;
-											for(var i=1;i<csize;i++){ //look for an empty slot
-												if(!connections.contains("connections["+i+"]::to::number")){
-													//post("\nfound an empty slot,",i," to use for potential connection wire");
-													connections.replace("connections["+i+"]",potential_connection);
-													wires_potential_connection = i;
-													w=0;
-													i=csize;
-												}
-											}
-											if(w==1){
-												connections.append("connections",potential_connection);
-												wires_potential_connection = connections.getsize("connections")-1;
-												// post("\nappended, number is",wires_potential_connection);
-											}
+											getWiresPotentialConnection(); //find a free slot in the connections dict
 										}else{
 											// post("\nreplaced", wires_potential_connection);
 											connections.replace("connections["+wires_potential_connection+"]",potential_connection);
@@ -1167,6 +1163,25 @@ function omouse(x,y,leftbutton,ctrl,shift,caps,alt,e){
 				custom_mouse_passthrough(mouse_click_parameters[usermouse.got_i],1);
 			}
 		}
+	}
+}
+
+function getWiresPotentialConnection() {
+	var csize = connections.getsize("connections");
+	var w = 1;
+	for (var i = 1; i < csize; i++) { //look for an empty slot
+		if (!connections.contains("connections[" + i + "]::to::number")) {
+			//post("\nfound an empty slot,",i," to use for potential connection wire");
+			connections.replace("connections[" + i + "]", potential_connection);
+			wires_potential_connection = i;
+			w = 0;
+			i = csize;
+		}
+	}
+	if (w == 1) {
+		connections.append("connections", potential_connection);
+		wires_potential_connection = connections.getsize("connections") - 1;
+		// post("\nappended, number is",wires_potential_connection);
 	}
 }
 
@@ -1308,7 +1323,7 @@ function mousewheel(x,y,leftbutton,ctrl,shift,caps,alt,e,f, scroll){
 				} //todo? ctrl-scroll a block
 			}else if((usermouse.shift)&&(usermouse.alt)){
 				var stw = screentoworld(usermouse.x,usermouse.y);
-				make_space(stw[0],stw[1],-4*scroll);
+				make_space(stw[0],stw[1],-1*scroll);
 			}
 		}else if(displaymode=="block_menu"){
 			menu.camera_scroll = Math.max(-3,Math.min(menu.length+3,menu.camera_scroll-3*scroll));
