@@ -51,6 +51,18 @@
 				}
 
 			}
+,
+			"LCXL3 1 MIDI Out" : 			{
+				"name" : "LCXL3 1 MIDI Out",
+				"substitute" : [  ],
+				"outputs" : 32,
+				"type" : "potentiometer",
+				"channel" : 16,
+				"first" : 5,
+				"scaling" : 0.125,
+				"columns" : 8,
+				"rows" : 4
+			}
 
 		}
 ,

@@ -95,12 +95,13 @@
 				"scaling" : 1,
 				"columns" : 8,
 				"rows" : 3,
-                                "faders" :                            {
-                                        "type" : "potentiometer",
-                                        "channel" : 1,
-                                        "first" : 77,
-                                        "count" : 8
-                                },
+				"faders" : 				{
+					"type" : "potentiometer",
+					"channel" : 1,
+					"first" : 77,
+					"count" : 8
+				}
+,
 				"buttons" : 				{
 					"first" : 37,
 					"type" : "note",

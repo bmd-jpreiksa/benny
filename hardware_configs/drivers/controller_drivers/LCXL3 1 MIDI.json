@@ -1,19 +1,19 @@
 {
-	"MIDIIN2 (LCXL3 1 MIDI)" : 			{
-		"name" :  "MIDIIN2 (LCXL3 1 MIDI)" ,
-		"driver" :  "MIDIIN2 (LCXL3 1 MIDI)" ,
+	"LCXL3 1 MIDI" : 			{
+		"name" :  "LCXL3 1 MIDI" ,
+		"driver" :  "LCXL3 1 MIDI" ,
                 "substitute" : [ "LPD8 mk2" ],
                 "outputs" : 24,
                 "type" : "encoder",
                 "channel" : 16,
-                "first" : 77,
+                "first" : 13,
                 "scaling" : 1,
                 "columns" : 8,
                 "rows" : 3,
                 "faders" :                            {
                         "type" : "potentiometer",
                         "channel" : 1,
-                        "first" : 77,
+                        "first" : 5,
                         "count" : 8
                 },
 		"buttons" : 				{
