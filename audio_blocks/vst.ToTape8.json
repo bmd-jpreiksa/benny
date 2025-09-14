@@ -1,0 +1,94 @@
+{
+	"vst.ToTape8" : 	{
+		"patcher" : "vst.loader",
+		"type" : "audio",
+		"help_text" : "ToTape8",
+		"block_ui_patcher" : "blank.ui",
+		"max_polyphony" : 0,
+		"plugin_name" : "ToTape8",
+		"plugin_type" : "vst",
+		"pitchbend_range" : 2,
+		"compatibility_mode" : 0,
+		"upsample" : 1,
+		"subvoices" : 2,
+		"connections" : 		{
+			"in" : 			{
+				"audio" : [ "audio in" ],
+				"midi" : [ "notes in", "pitchbend", "modulation", "aftertouch", "sustain" ]
+			}
+,
+			"out" : 			{
+				"audio" : [ "audio out" ],
+				"midi" : [ "notes out" ],
+				"parameters" : [ "pitchbend", "modulation", "aftertouch", "sustain" ]
+			}
+
+		}
+,
+		"parameters" : [ 			{
+				"name" : "Input",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Tilt",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Shape",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Flutter",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "FlutSpd",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Bias",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "HeadBmp",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "HeadFrq",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Output",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+ ]
+	}
+
+}

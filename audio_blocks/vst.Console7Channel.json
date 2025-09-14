@@ -1,0 +1,38 @@
+{
+	"vst.Console7.Channel" : 	{
+		"patcher" : "vst.loader",
+		"type" : "audio",
+		"help_text" : "Console7Channel",
+		"block_ui_patcher" : "blank.ui",
+		"max_polyphony" : 0,
+		"plugin_name" : "Console7Channel",
+		"plugin_type" : "vst",
+		"pitchbend_range" : 2,
+		"compatibility_mode" : 0,
+		"upsample" : 1,
+		"subvoices" : 2,
+		"connections" : 		{
+			"in" : 			{
+				"audio" : [ "audio in" ],
+				"midi" : [ "notes in", "pitchbend", "modulation", "aftertouch", "sustain" ]
+			}
+,
+			"out" : 			{
+				"audio" : [ "audio out" ],
+				"midi" : [ "notes out" ],
+				"parameters" : [ "pitchbend", "modulation", "aftertouch", "sustain" ]
+			}
+
+		}
+,
+		"parameters" : 		{
+			"name" : "Fader",
+			"default" : 0.772000014781952,
+			"type" : "float",
+			"wrap" : 0,
+			"values" : [ "uni", 0, 1, "lin" ]
+		}
+
+	}
+
+}
