@@ -1,0 +1,1823 @@
+{
+	"vst.Chromaphone.2" : 	{
+		"patcher" : "vst.loader",
+		"type" : "audio",
+		"help_text" : "Chromaphone 2",
+		"block_ui_patcher" : "blank.ui",
+		"max_polyphony" : 0,
+		"plugin_name" : "Chromaphone 2",
+		"plugin_type" : "au",
+		"pitchbend_range" : 2,
+		"compatibility_mode" : 0,
+		"upsample" : 1,
+		"subvoices" : 2,
+		"connections" : 		{
+			"in" : 			{
+				"audio" : [ "audio in" ],
+				"midi" : [ "notes in", "pitchbend", "modulation", "aftertouch", "sustain" ]
+			}
+,
+			"out" : 			{
+				"audio" : [ "audio out" ],
+				"midi" : [ "notes out" ],
+				"parameters" : [ "pitchbend", "modulation", "aftertouch", "sustain" ]
+			}
+
+		}
+,
+		"parameters" : [ 			{
+				"name" : "Global: Volume",
+				"default" : 0.099099099636078,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Global: Tune",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Unison: Detune",
+				"default" : 0.004999999888241,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Unison: Delay",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Unison: Voices",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Unison: On",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Latch",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Range",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Order",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Span",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Rate",
+				"default" : 0.142857149243355,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Sync On",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Sync Rate",
+				"default" : 0.600000023841858,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Arp 1",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Arp 2",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Arp 3",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Arp 4",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Arp 5",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Arp 6",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Arp 7",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Arp 8",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Arp 9",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Arp 10",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Arp 11",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Arp 12",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Arp 13",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Arp 14",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Arp 15",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Arp 16",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: Steps",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Arpeggiator: On",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Mallet: Stiffness",
+				"default" : 0.141056418418884,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Mallet: Stiffness Key",
+				"default" : 0.625,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Mallet: Stiffness Vel",
+				"default" : 0.641666650772095,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Mallet: Noise",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Mallet: Noise Key",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Mallet: Noise Vel",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Mallet: Color",
+				"default" : 0.270000010728836,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Mallet: On",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Filter",
+				"default" : 0.800000011920929,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Frequency",
+				"default" : 0.015315315686166,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Frequency Key",
+				"default" : 0.595000028610229,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Frequency Vel",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Frequency LFO",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Frequency Env",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Width",
+				"default" : 0.283730924129486,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Q",
+				"default" : 0.006732193753123,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Density",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Density Key",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Density Vel",
+				"default" : 0.789999961853027,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Density LFO",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Density Env",
+				"default" : 0.370000004768372,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Dirac",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Amp 100 Hz",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Amp 200 Hz",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Amp 350 Hz",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Amp 500 Hz",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Amp 700 Hz",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Amp 1000 Hz",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Amp 1400 Hz",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Amp 2000 Hz",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Amp 3500 Hz",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Amp 7000 Hz",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: On",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Envelope",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Delay",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Attack",
+				"default" : 0.008034233935177,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Hold",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Decay",
+				"default" : 0.033927034586668,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Sustain",
+				"default" : 0.649339318275452,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Noise: Release",
+				"default" : 0.021355524659157,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Mixer: Mallet Volume",
+				"default" : 0.037845756858587,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Mixer: Mallet Volume Key",
+				"default" : 0.625,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Mixer: Mallet Volume Vel",
+				"default" : 0.808333337306976,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Mixer: Mallet Direct",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Mixer: Noise Volume",
+				"default" : 0.083617851138115,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Mixer: Noise Volume Key",
+				"default" : 0.639999985694885,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Mixer: Noise Volume Vel",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Mixer: Noise Volume LFO",
+				"default" : 0.579999983310699,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Mixer: Noise Direct",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Type",
+				"default" : 0.25,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Pitch",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Key",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: LFO",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Env Level",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Env Vel",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Env Rate",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Quality",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Decay",
+				"default" : 0.038151904940605,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Decay Key",
+				"default" : 0.487500011920929,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Release",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Material",
+				"default" : 0.425000011920929,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Radius",
+				"default" : 0.666666686534882,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Tone",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Hit Pt",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Hit Key",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Hit Vel",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Hit Rdm",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Low Cut",
+				"default" : 0.012500000186265,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Manual 1",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Manual 2",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Manual 3",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: Manual 4",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator A: On",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator B: Type",
+				"default" : 0.75,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator B: Pitch",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator B: Key",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator B: Quality",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator B: Decay",
+				"default" : 0.010300147347152,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator B: Decay Key",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator B: Release",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator B: Material",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator B: Radius",
+				"default" : 0.405000001192093,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator B: Tone",
+				"default" : 0.514999985694885,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator B: Hit Pt",
+				"default" : 0.5625,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator B: Hit Key",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator B: Hit Vel",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator B: Hit Rdm",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator B: Low Cut",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator B: Manual 1",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator B: Manual 2",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator B: Manual 3",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator B: Manual 4",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonator B: On",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonators: Balance",
+				"default" : 0.466666609048843,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonators: Balance Key",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Resonators: Coupled",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vibrato: Rate",
+				"default" : 0.16666667163372,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vibrato: Delay",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vibrato: Fade",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vibrato: Amount",
+				"default" : 0.016516456380486,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vibrato: Modwheel Amount",
+				"default" : 0.125,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "LFO: Type",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "LFO: Rate",
+				"default" : 0.264214038848877,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "LFO: Sync On",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "LFO: Sync Rate",
+				"default" : 0.588235318660736,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "LFO: Delay",
+				"default" : 0.019999999552965,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "LFO: Offset",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "LFO: PW",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "LFO: On",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Equalizer: Low Freq",
+				"default" : 0.16666667163372,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Equalizer: Low Gain",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Equalizer: Low Mid Freq",
+				"default" : 0.070707067847252,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Equalizer: Low Mid Gain",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Equalizer: Low Mid Q",
+				"default" : 0.046632129698992,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Equalizer: High Mid Freq",
+				"default" : 0.151515156030655,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Equalizer: High Mid Gain",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Equalizer: High Mid Q",
+				"default" : 0.11025907099247,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Equalizer: High Freq",
+				"default" : 0.317647069692612,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Equalizer: High Gain",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Equalizer: Side Chain",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Equalizer: On",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Compressor: Threshold",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Compressor: Ratio",
+				"default" : 0.066666670143604,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Compressor: Attack",
+				"default" : 0.049524761736393,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Compressor: Release",
+				"default" : 0.049524761736393,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Compressor: Gain",
+				"default" : 0.16666667163372,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Compressor: Pre",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Compressor: On",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Effect 1: On",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Effect 1: Type",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Delay 1: Wet",
+				"default" : 0.25,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Delay 1: Dry",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Delay 1: Sync On",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Delay 1: Sync Rate",
+				"default" : 0.411764711141586,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Delay 1: Delay",
+				"default" : 0.152542367577553,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Delay 1: Feedback",
+				"default" : 0.393700778484344,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Delay 1: Cutoff",
+				"default" : 0.235504150390625,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Delay 1: Pan",
+				"default" : 0.850000023841858,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Distortion 1: Drive",
+				"default" : 0.00016282928118,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Distortion 1: Volume",
+				"default" : 0.086182542145252,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Distortion 1: Shape",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Distortion 1: Tone",
+				"default" : 0.240252792835236,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Distortion 1: Mix",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Phaser 1: Mix",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Phaser 1: Depth",
+				"default" : 0.419999986886978,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Phaser 1: Frequency",
+				"default" : 0.049458660185337,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Phaser 1: Feedback",
+				"default" : 0.467735141515732,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Phaser 1: Sync On",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Phaser 1: Sync Rate",
+				"default" : 0.411764711141586,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Phaser 1: Rate",
+				"default" : 0.028282828629017,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vintage Chorus 1: Depth",
+				"default" : 0.008016032166779,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vintage Chorus 1: Spread",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vintage Chorus 1: Delay",
+				"default" : 0.261744976043701,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vintage Chorus 1: Feedback",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vintage Chorus 1: Sync On",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vintage Chorus 1: Sync Rate",
+				"default" : 0.411764711141586,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vintage Chorus 1: Rate",
+				"default" : 0.243697464466095,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vintage Chorus 1: Mix",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vintage Chorus 1: Mode",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Chorus 1: Depth",
+				"default" : 0.100000001490116,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Chorus 1: Fat",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Chorus 1: Spread",
+				"default" : 0.620000004768372,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Chorus 1: Sync On",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Chorus 1: Sync Rate",
+				"default" : 0.411764711141586,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Chorus 1: Rate",
+				"default" : 0.040404044091702,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Chorus 1: Mix",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Flanger 1: Depth",
+				"default" : 0.372999995946884,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Flanger 1: Delay",
+				"default" : 0.583333313465118,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Flanger 1: Feedback",
+				"default" : 0.526315808296204,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Flanger 1: Sync On",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Flanger 1: Sync Rate",
+				"default" : 0.411764711141586,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Flanger 1: Rate",
+				"default" : 0.028282828629017,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Flanger 1: Mix",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Tremolo 1: Depth",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Tremolo 1: Sync On",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Tremolo 1: Sync Rate",
+				"default" : 0.411764711141586,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Tremolo 1: Rate",
+				"default" : 0.292929321527481,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Tremolo 1: Stereo",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Tremolo 1: Shape",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Auto Wah 1: Depth",
+				"default" : 0.074400000274181,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Auto Wah 1: Freq",
+				"default" : 0.109319902956486,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Auto Wah 1: Speed",
+				"default" : 0.458333343267441,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Wah Wah 1: Depth",
+				"default" : 0.15641026198864,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Wah Wah 1: Freq",
+				"default" : 0.485964924097061,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Wah Wah 1: Sync On",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Wah Wah 1: Sync Rate",
+				"default" : 0.411764711141586,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Wah Wah 1: Rate",
+				"default" : 0.157575756311417,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Notch 1: Depth",
+				"default" : 0.274358987808228,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Notch 1: Freq",
+				"default" : 0.042937852442265,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Notch 1: Sync On",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Notch 1: Sync Rate",
+				"default" : 0.411764711141586,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Notch 1: Rate",
+				"default" : 0.090909093618393,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Effect 2: On",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Effect 2: Type",
+				"default" : 0.444444447755814,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Delay 2: Wet",
+				"default" : 0.125,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Delay 2: Dry",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Delay 2: Sync On",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Delay 2: Sync Rate",
+				"default" : 0.411764711141586,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Delay 2: Delay",
+				"default" : 0.152542367577553,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Delay 2: Feedback",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Delay 2: Cutoff",
+				"default" : 0.856979429721832,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Delay 2: Pan",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Distortion 2: Drive",
+				"default" : 0.00016282928118,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Distortion 2: Volume",
+				"default" : 0.086182542145252,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Distortion 2: Shape",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Distortion 2: Tone",
+				"default" : 0.240252792835236,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Distortion 2: Mix",
+				"default" : 1.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Phaser 2: Mix",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Phaser 2: Depth",
+				"default" : 0.419999986886978,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Phaser 2: Frequency",
+				"default" : 0.049458660185337,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Phaser 2: Feedback",
+				"default" : 0.467735141515732,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Phaser 2: Sync On",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Phaser 2: Sync Rate",
+				"default" : 0.411764711141586,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Phaser 2: Rate",
+				"default" : 0.028282828629017,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vintage Chorus 2: Depth",
+				"default" : 0.008016032166779,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vintage Chorus 2: Spread",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vintage Chorus 2: Delay",
+				"default" : 0.261744976043701,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vintage Chorus 2: Feedback",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vintage Chorus 2: Sync On",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vintage Chorus 2: Sync Rate",
+				"default" : 0.411764711141586,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vintage Chorus 2: Rate",
+				"default" : 0.243697464466095,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vintage Chorus 2: Mix",
+				"default" : 0.5,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Vintage Chorus 2: Mode",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Chorus 2: Depth",
+				"default" : 0.100000001490116,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+, 			{
+				"name" : "Chorus 2: Fat",
+				"default" : 0.0,
+				"type" : "float",
+				"wrap" : 0,
+				"values" : [ "uni", 0, 1, "lin" ]
+			}
+ ]
+	}
+
+}
