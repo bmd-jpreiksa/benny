@@ -2030,7 +2030,7 @@
                         220.0,
                         22.0
                     ],
-                    "text": "expr (($f1 != 0) * ($f2 > 0))"
+                    "text": "expr (($f1 == 1) * ($f2 > 0))"
                 }
             },
             {
@@ -3425,60 +3425,60 @@
             {
                 "patchline": {
                     "source": [
-                        "obj-49",
-                        1
-                    ],
-                    "destination": [
-                        "obj-94",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-49",
-                        2
-                    ],
-                    "destination": [
-                        "obj-94",
-                        1
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-49",
-                        1
-                    ],
-                    "destination": [
-                        "obj-100",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-49",
-                        2
-                    ],
-                    "destination": [
-                        "obj-100",
-                        1
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
                         "obj-100",
                         0
                     ],
                     "destination": [
                         "obj-13",
                         0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-49",
+                        0
+                    ],
+                    "destination": [
+                        "obj-94",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-49",
+                        2
+                    ],
+                    "destination": [
+                        "obj-94",
+                        1
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-49",
+                        2
+                    ],
+                    "destination": [
+                        "obj-100",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-49",
+                        0
+                    ],
+                    "destination": [
+                        "obj-100",
+                        1
                     ]
                 }
             }
