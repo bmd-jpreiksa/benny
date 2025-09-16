@@ -93,7 +93,7 @@
 			"audio_clock_out" : 			{
 				"enable" : 1,
 				"ppqn" : 4,
-				"channel" : 30
+				"channel" : 8
 			}
 
 		}
