@@ -91,7 +91,7 @@
 ,
 		"sync" : 		{
 			"audio_clock_out" : 			{
-				"enable" : 1,
+				"enable" : 0,
 				"ppqn" : 4,
 				"channel" : 30
 			}
