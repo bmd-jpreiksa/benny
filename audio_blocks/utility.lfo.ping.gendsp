@@ -1,0 +1,277 @@
+{
+    "patcher": {
+        "fileversion": 1,
+        "appversion": {
+            "major": 9,
+            "minor": 0,
+            "revision": 7,
+            "architecture": "x64",
+            "modernui": 1
+        },
+        "classnamespace": "dsp.gen",
+        "rect": [
+            134.0,
+            134.0,
+            1061.0,
+            595.0
+        ],
+        "gridsize": [
+            15.0,
+            15.0
+        ],
+        "boxes": [
+            {
+                "box": {
+                    "id": "obj-9",
+                    "maxclass": "newobj",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [
+                        515.0,
+                        883.0,
+                        35.0,
+                        22.0
+                    ],
+                    "text": "out 5"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-8",
+                    "maxclass": "newobj",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [
+                        398.75,
+                        882.0,
+                        35.0,
+                        22.0
+                    ],
+                    "text": "out 4"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-6",
+                    "maxclass": "newobj",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [
+                        282.5,
+                        882.0,
+                        35.0,
+                        22.0
+                    ],
+                    "text": "out 3"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-7",
+                    "maxclass": "newobj",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [
+                        166.25,
+                        882.0,
+                        35.0,
+                        22.0
+                    ],
+                    "text": "out 2"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-1",
+                    "maxclass": "newobj",
+                    "numinlets": 0,
+                    "numoutlets": 1,
+                    "outlettype": [
+                        ""
+                    ],
+                    "patching_rect": [
+                        13.0,
+                        6.0,
+                        28.0,
+                        22.0
+                    ],
+                    "text": "in 1"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-2",
+                    "maxclass": "newobj",
+                    "numinlets": 0,
+                    "numoutlets": 1,
+                    "outlettype": [
+                        ""
+                    ],
+                    "patching_rect": [
+                        1016.0,
+                        6.0,
+                        28.0,
+                        22.0
+                    ],
+                    "text": "in 2"
+                }
+            },
+            {
+                "box": {
+                    "code": "Buffer prm(\"voice_parameter_buffer\");\nBuffer changed_flags(\"changed_flags\");\n\nHistory ti,mu,ar,cu,i1,i2,o2,ga,mirror(1),reuse(1);\nHistory cu_t(0),cu_a(0),cu_f(0);\nHistory cycle_samples(1),attack_samples(1),attack_ratio(0.5);\nHistory env(0);\nHistory prev_env(0);\nHistory stage(0);\nHistory trig_latched(0);\nHistory upda(0);\nHistory idle_state(1);\nHistory phase_counter(0);\nHistory attflag(0);\nHistory relflag(0);\n\nParam voice_offset(0);\nParam voice_is(0);\nParam tr(0);\nParam panic(0);\n\nif(upda<=0){\n        upda = vectorsize + 4;\n        if(peek(changed_flags,voice_is,0)>0){\n                changed_flags.poke(0,voice_is);\n                ti = peek(prm, voice_offset, 0, channels=1);\n                mu = peek(prm, 1+voice_offset, 0, channels=1);\n                ar = clip(peek(prm, 2+voice_offset, 0, channels=1),0.001,0.999);\n                cu = peek(prm, 3+voice_offset, 0, channels=1);\n                i1 = floor(4*peek(prm, 4+voice_offset, 0, channels=1));\n                i2 = floor(4*peek(prm, 5+voice_offset, 0, channels=1));\n                o2 = floor(4*peek(prm, 6+voice_offset, 0, channels=1));\n                ga = 2*peek(prm, 7+voice_offset, 0, channels=1)-1;\n                mirror = peek(prm, 8+voice_offset, 0, channels=1)>0.5;\n                reuse = peek(prm, 9+voice_offset, 0, channels=1)>0.5;\n                if(reuse){\n                        cu_f = cu*4;\n                        cu_t = clip(floor(cu_f)+1,1,4);\n                        cu_f = cu_f - floor(cu_f);\n                }else{\n                        cu_t = 2;\n                        cu_f = 0;\n                }\n                cu_a = mirror ? cu_t : (5-cu_t);\n                cu_a = clip(cu_a,1,4);\n        }\n}\nupda -= 1;\n\nmu_scale = max(0, mu);\nparam_time = (pow(1000,ti)-1+0.0000000001)*60.06006006006006;\nparam_time *= mu_scale;\ntap_time = max(0, in3);\nactive = max(tap_time > 0.000001, param_time > 0.000001);\nif(tap_time > 0.000001){\n        tap_selector = floor(clip(ti, 0, 1) * 18 + 0.5);\n        tap_selector = clip(tap_selector, 0, 18);\n        tap_ratio = selector(tap_selector+1, 0.0625,0.08333333333333333,0.125,0.16666666666666666,0.25,0.3333333333333333,0.5,0.6666666666666666,1,1.3333333333333333,2,4,8,12,16,20,24,28,32);\n        param_time = tap_time * tap_ratio * max(0.000001, mu_scale);\n        active = param_time > 0.000001;\n}\nif(active){\n        attack_ms = max(0.001, param_time * ar);\n        release_ms = max(0.001, param_time * (1-ar));\n        attack_samples = mstosamps(attack_ms);\n        release_samples = mstosamps(release_ms);\n        cycle_samples = max(attack_samples + release_samples, 2);\n        attack_ratio = attack_samples / cycle_samples;\n}else{\n        attack_samples = 1;\n        release_samples = 1;\n        cycle_samples = 2;\n        attack_ratio = 0.5;\n}\nidle_state = active ? 0 : 1;\n\nif(panic){\n        env = 0;\n        prev_env = 0;\n        stage = 0;\n        phase_counter = 0;\n        trig_latched = 0;\n        attflag = 0;\n        relflag = 0;\n        idle_state = 1;\n        active = 0;\n}\n\nrate_mod = 1;\nphase_mod = 0;\ndepth_mod = 0;\nif(i1==1){\n        rate_mod += in1;\n}else if(i1==2){\n        phase_mod += in1;\n}else if(i1==3){\n        depth_mod += in1;\n}\nif(i2==1){\n        rate_mod += in2;\n}else if(i2==2){\n        phase_mod += in2;\n}else if(i2==3){\n        depth_mod += in2;\n}\nrate_mod = max(0.0001, rate_mod);\nphase_mod = phase_mod * 0.25;\ndepth_mod = clip(depth_mod, -1, 1);\n\nif(active){\n        phase_counter += rate_mod;\n        trig_event = (delta(tr)>0);\n        if(trig_event && (trig_latched==0)){\n                phase_counter = 0;\n                stage = 0;\n                trig_latched = 1;\n        }\n        if(phase_counter >= cycle_samples){\n                phase_counter -= cycle_samples;\n                stage = 0;\n                trig_latched = 0;\n                relflag = 1;\n        }else{\n                relflag = 0;\n        }\n        if(phase_counter >= attack_samples){\n                if(stage==0){\n                        stage = 1;\n                        attflag = 1;\n                }else{\n                        attflag = 0;\n                }\n        }else{\n                attflag = 0;\n                stage = 0;\n        }\n}else{\n        phase_counter = 0;\n        stage = 0;\n        trig_latched = 0;\n        attflag = 0;\n        relflag = 0;\n}\n\nphase_norm = active ? phase_counter / cycle_samples : 0;\nphase_mix = phase_norm + phase_mod;\nphase_out = phase_mix - floor(phase_mix);\nattack_ratio = clip(attack_ratio, 0.001, 0.999);\n\npi_const = acos(-1);\nprogress_a = (attack_ratio>0) ? clip(phase_out / attack_ratio,0,1) : 0;\nprogress_r = (attack_ratio<1) ? clip((phase_out - attack_ratio) / max(0.000001, 1-attack_ratio),0,1) : 0;\none_minus_a = max(0,1-progress_a);\nbase1 = 1 - pow(one_minus_a,4);\nbase2 = progress_a;\nbase3 = pow(progress_a,4);\nbase4 = 0.5 - 0.5*cos(progress_a*pi_const);\nbase1n = 1 - pow(max(0,1-progress_r),4);\nbase2n = progress_r;\nbase3n = pow(progress_r,4);\nbase4n = 0.5 - 0.5*cos(progress_r*pi_const);\n\ncurve_attack_idx = clip(cu_a,1,4);\ncurve_attack_next = clip(curve_attack_idx+1,1,4);\ncurve_release_idx = clip(cu_t,1,4);\ncurve_release_next = clip(curve_release_idx+1,1,4);\n\ncur_attack = selector(curve_attack_idx, base1, base2, base3, base4);\ncur_attack_next = selector(curve_attack_next, base1, base2, base3, base4);\ncur_release = selector(curve_release_idx, base1n, base2n, base3n, base4n);\ncur_release_next = selector(curve_release_next, base1n, base2n, base3n, base4n);\nattack_curve = cur_attack + (cur_attack_next - cur_attack) * cu_f;\nrelease_curve = cur_release + (cur_release_next - cur_release) * cu_f;\n\nif(active){\n        wave = (phase_out < attack_ratio) ? (-1 + 2*attack_curve) : (1 - 2*release_curve);\n        amp = ga * (1 + depth_mod);\n        env = wave * amp;\n}else{\n        env = 0;\n}\nderiv = env - prev_env;\nprev_env = env;\n\nphase_flag = (stage==1) * active;\n\nout1 = env;\nif(o2==0){\n        out2 = active ? ((phase_out < attack_ratio) ? 1 : -1) : 0;\n}else if(o2==1){\n        out2 = phase_flag;\n}else if(o2==2){\n        out2 = deriv;\n}else{\n        out2 = active ? (phase_out < attack_ratio) : 0;\n}\nout3 = attflag;\nout4 = relflag;\nout5 = idle_state;\n",
+                    "fontface": 0,
+                    "fontname": "<Monospaced>",
+                    "fontsize": 12.0,
+                    "id": "obj-3",
+                    "maxclass": "codebox",
+                    "numinlets": 3,
+                    "numoutlets": 5,
+                    "outlettype": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "patching_rect": [
+                        50.0,
+                        6.0,
+                        964.0,
+                        594.0
+                    ]
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-4",
+                    "maxclass": "newobj",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [
+                        50.0,
+                        882.0,
+                        35.0,
+                        22.0
+                    ],
+                    "text": "out 1"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-10",
+                    "maxclass": "newobj",
+                    "numinlets": 0,
+                    "numoutlets": 1,
+                    "outlettype": [
+                        ""
+                    ],
+                    "patching_rect": [
+                        515.0,
+                        6.0,
+                        28.0,
+                        22.0
+                    ],
+                    "text": "in 3"
+                }
+            }
+        ],
+        "lines": [
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-3",
+                        0
+                    ],
+                    "source": [
+                        "obj-1",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-3",
+                        1
+                    ],
+                    "source": [
+                        "obj-2",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-4",
+                        0
+                    ],
+                    "source": [
+                        "obj-3",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-6",
+                        0
+                    ],
+                    "source": [
+                        "obj-3",
+                        2
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-7",
+                        0
+                    ],
+                    "source": [
+                        "obj-3",
+                        1
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-8",
+                        0
+                    ],
+                    "source": [
+                        "obj-3",
+                        3
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-9",
+                        0
+                    ],
+                    "source": [
+                        "obj-3",
+                        4
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-10",
+                        0
+                    ],
+                    "destination": [
+                        "obj-3",
+                        2
+                    ]
+                }
+            }
+        ]
+    }
+}

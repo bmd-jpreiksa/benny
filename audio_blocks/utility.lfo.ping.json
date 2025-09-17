@@ -1,0 +1,215 @@
+{
+    "utility.lfo.ping": {
+        "patcher": "utility.lfo.ping",
+        "type": "audio",
+        "block_ui_patcher": "blank.ui",
+        "help_text": "Tempo-synchronised ping LFO with tap/trigger inputs, envelope-family curves, configurable modulation inputs, and multi-mode auxiliary output.",
+        "max_polyphony": 0,
+        "upsample": 1,
+        "connections": {
+            "in": {
+                "audio": [
+                    "mod a",
+                    "mod b"
+                ],
+                "midi": [
+                    "trigger",
+                    "tap"
+                ]
+            },
+            "out": {
+                "audio": [
+                    "lfo out",
+                    "aux out"
+                ],
+                "midi": [
+                    "EOA",
+                    "EOR",
+                    "idle"
+                ],
+                "midi_watched": [
+                    0,
+                    1,
+                    1
+                ]
+            }
+        },
+        "panel": {
+            "parameters": [
+                0,
+                1,
+                2
+            ]
+        },
+        "groups": [
+            {
+                "contains": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "colour": 5
+            },
+            {
+                "contains": [
+                    4,
+                    5,
+                    6,
+                    7
+                ],
+                "height": 0,
+                "colour": -10
+            },
+            {
+                "contains": [
+                    8,
+                    9
+                ],
+                "height": 3,
+                "colour": -20
+            }
+        ],
+        "parameters": [
+            {
+                "name": "time",
+                "type": "menu_l",
+                "values": [
+                    "64n",
+                    "32nt",
+                    "32n",
+                    "16nt",
+                    "16n",
+                    "8nt",
+                    "8n",
+                    "4nt",
+                    "4n",
+                    "2nt",
+                    "2n",
+                    "1n",
+                    "2b",
+                    "3b",
+                    "4b",
+                    "5b",
+                    "6b",
+                    "7b",
+                    "8b"
+                ],
+                "error_scale": 0.5,
+                "wrap": 0,
+                "default": 0.46,
+                "columns": 4
+            },
+            {
+                "name": "mult",
+                "type": "float",
+                "values": [
+                    "uni",
+                    0,
+                    2,
+                    "lin"
+                ],
+                "wrap": 0,
+                "default": 0.5
+            },
+            {
+                "name": "attack_release",
+                "type": "float",
+                "values": [
+                    "uni",
+                    0.001,
+                    0.999,
+                    "lin"
+                ],
+                "wrap": 0,
+                "default": 0.5
+            },
+            {
+                "name": "curve",
+                "type": "menu_f",
+                "values": [
+                    "exp",
+                    "lin",
+                    "log"
+                ],
+                "wrap": 0,
+                "default": 0.2
+            },
+            {
+                "name": "in1_mode",
+                "type": "menu_l",
+                "values": [
+                    "none",
+                    "rate",
+                    "phase",
+                    "depth"
+                ],
+                "force_label": 1,
+                "wrap": 1,
+                "default": 0
+            },
+            {
+                "name": "in2_mode",
+                "type": "menu_l",
+                "values": [
+                    "none",
+                    "rate",
+                    "phase",
+                    "depth"
+                ],
+                "force_label": 1,
+                "wrap": 1,
+                "default": 0
+            },
+            {
+                "name": "out2",
+                "type": "menu_l",
+                "values": [
+                    "target",
+                    "phase",
+                    "derivative",
+                    "gate"
+                ],
+                "force_label": 1,
+                "wrap": 1,
+                "default": 0
+            },
+            {
+                "name": "gain",
+                "type": "float",
+                "values": [
+                    "bi",
+                    -1,
+                    1,
+                    "lin"
+                ],
+                "wrap": 0,
+                "default": 1
+            },
+            {
+                "name": "attack_shape",
+                "type": "menu_b",
+                "nopervoice": 1,
+                "forcelabel": 1,
+                "values": [
+                    "attack_shape_shared",
+                    "attack_shape_mirror"
+                ],
+                "wrap": 1,
+                "default": 0.3
+            },
+            {
+                "name": "curve_family",
+                "type": "menu_b",
+                "nopervoice": 1,
+                "forcelabel": 1,
+                "values": [
+                    "curve_family_basic",
+                    "curve_family_pingenv"
+                ],
+                "wrap": 1,
+                "default": 0.7
+            }
+        ]
+    }
+}
