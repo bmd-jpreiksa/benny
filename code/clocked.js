@@ -29,14 +29,22 @@ function slowclock(){
 var bangflag=0;
 
 function frameclock(){
-	// if(redraw_flag.flag!=0) post("\nframeclock",redraw_flag.flag);
-	if(bangflag){ //if it's got behind itself
-		lcd_main.message("bang");
-		post("\n**collision**");
-		bangflag = 0;
-		// return 0;
-	}
-	var i,t;
+        var frame_did_render = 0;
+        var had_pending_draw = redraw_flag.flag;
+        var had_deferred = redraw_flag.deferred;
+        var had_input = (usermouse.queue.length>0);
+        var had_loading = loading.ready_for_next_action;
+        var had_poly_activity = still_checking_polys;
+        var had_bangflag = bangflag;
+        // if(redraw_flag.flag!=0) post("\nframeclock",redraw_flag.flag);
+        if(bangflag){ //if it's got behind itself
+                lcd_main.message("bang");
+                frame_did_render = 1;
+                post("\n**collision**");
+                bangflag = 0;
+                // return 0;
+        }
+        var i,t;
 	if(usermouse.queue.length>0){
 		//deferred_diag.push("mouse queue length "+usermouse.queue.length+" count is "+usermouse.qcount+" qlb is "+usermouse.qlb);
 		while(usermouse.queue.length>0){
@@ -64,21 +72,23 @@ function frameclock(){
 
 	if(still_checking_polys) polycheck();
 
-	if(loading.ready_for_next_action){
-		//post("\nloading progress:",loading.progress,"loading wait",loading.ready_for_next_action);
-		//if(loading.progress>=MAX_BLOCKS+loading.mapping.length) polycheck();
-		loading.ready_for_next_action--;
-		if(loading.ready_for_next_action==0){
-			import_song();
+        if(loading.ready_for_next_action){
+                //post("\nloading progress:",loading.progress,"loading wait",loading.ready_for_next_action);
+                //if(loading.progress>=MAX_BLOCKS+loading.mapping.length) polycheck();
+                loading.ready_for_next_action--;
+                if(loading.ready_for_next_action==0){
+                        import_song();
 			lcd_main.message("brgb", backgroundcolour_blocks);
 			lcd_main.message("clear");
-		}
-		draw_topbar();
-		if(displaymode=="block_menu") draw_menu_hint();
-		//sidebar_meters();
-		lcd_main.message("bang");
-		return 1;
-	}
+                }
+                draw_topbar();
+                if(displaymode=="block_menu") draw_menu_hint();
+                //sidebar_meters();
+                lcd_main.message("bang");
+                frame_did_render = 1;
+                update_idle_fps(true);
+                return 1;
+        }
 	if(rebuild_action_list){
 		build_mod_sum_action_list();
 		rebuild_action_list=0;
@@ -240,22 +250,25 @@ function frameclock(){
 		if(sidebar.panel&&!(redraw_flag.flag&6)) update_custom();
 		if((bottombar.block>-1)&&!(redraw_flag.flag&6))update_bottom_bar();
 	}
-	if(bangflag==1) {
-		lcd_main.message("bang");
-		bangflag = 0;
-	}else if(bangflag == 2){
-		messnamed("to_blockmanager","bang_yourself");
-	}
-	
+        if(bangflag==1) {
+                lcd_main.message("bang");
+                frame_did_render = 1;
+                bangflag = 0;
+        }else if(bangflag == 2){
+                messnamed("to_blockmanager","bang_yourself");
+        }
+
 	redraw_flag.flag = 0;
 	if(redraw_flag.deferred!=0){ //.deferred = skip a frame, |=128 makes it skip 2 frames
 		redraw_flag.flag = redraw_flag.deferred;
 		redraw_flag.deferred = 0;
 	}
-	if(end_of_frame_fn!=null) {
-		end_of_frame_fn();
-		end_of_frame_fn = null;
-	}
+        if(end_of_frame_fn!=null) {
+                end_of_frame_fn();
+                end_of_frame_fn = null;
+        }
+        var frame_had_activity = frame_did_render || had_pending_draw || had_deferred || had_input || (loading.ready_for_next_action>0) || (had_loading>0) || (had_poly_activity>0) || had_bangflag;
+        update_idle_fps(frame_had_activity);
 }
 
 function bang_yourself(){
