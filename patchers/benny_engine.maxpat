@@ -86,7 +86,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 952.0, 395.0, 598.0, 22.0 ],
-					"text" : "jit.gl.videoplane benny @tex_map 1 @transform_reset 2 @auto_material 0 @enable 0 @mat_emission 1 1 1 1",
+					"text" : "jit.gl.videoplane #0-benny @tex_map 1 @transform_reset 2 @auto_material 0 @enable 0 @mat_emission 1 1 1 1",
 					"varname" : "bottombar_videoplane"
 				}
 
@@ -99,7 +99,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 952.0, 364.0, 598.0, 22.0 ],
-					"text" : "jit.gl.videoplane benny @tex_map 1 @transform_reset 2 @auto_material 0 @enable 0 @mat_emission 1 1 1 1",
+					"text" : "jit.gl.videoplane #0-benny @tex_map 1 @transform_reset 2 @auto_material 0 @enable 0 @mat_emission 1 1 1 1",
 					"varname" : "statesfadebar_videoplane"
 				}
 
@@ -112,7 +112,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 952.0, 333.0, 598.0, 22.0 ],
-					"text" : "jit.gl.videoplane benny @tex_map 1 @transform_reset 2 @auto_material 0 @enable 0 @mat_emission 1 1 1 1",
+					"text" : "jit.gl.videoplane #0-benny @tex_map 1 @transform_reset 2 @auto_material 0 @enable 0 @mat_emission 1 1 1 1",
 					"varname" : "statesbar_videoplane"
 				}
 
@@ -125,7 +125,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 952.0, 303.0, 598.0, 22.0 ],
-					"text" : "jit.gl.videoplane benny @tex_map 1 @transform_reset 2 @auto_material 0 @enable 0 @mat_emission 1 1 1 1",
+					"text" : "jit.gl.videoplane #0-benny @tex_map 1 @transform_reset 2 @auto_material 0 @enable 0 @mat_emission 1 1 1 1",
 					"varname" : "topbar_videoplane"
 				}
 
@@ -138,7 +138,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 952.0, 269.0, 598.0, 22.0 ],
-					"text" : "jit.gl.videoplane benny @tex_map 1 @enable 0 @auto_material 0 @transform_reset 2 @mat_emission 0 0 0 1",
+					"text" : "jit.gl.videoplane #0-benny @tex_map 1 @enable 0 @auto_material 0 @transform_reset 2 @mat_emission 0 0 0 1",
 					"varname" : "sidebar_videoplane"
 				}
 
@@ -162,7 +162,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 0,
 					"patching_rect" : [ 952.0, 232.625, 71.0, 22.0 ],
-					"text" : "jit_multiples",
+					"text" : "jit_multiples #0-benny #0-benny_pworld",
 					"varname" : "jit_multiples"
 				}
 
@@ -13191,7 +13191,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "jit_matrix", "bang", "" ],
 					"patching_rect" : [ 788.0, 272.0, 144.0, 22.0 ],
-					"text" : "jit.world benny @visible 0",
+					"text" : "jit.world #0-benny @visible 0",
 					"varname" : "world"
 				}
 

@@ -75,7 +75,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "jit_gl_texture", "", "" ],
 					"patching_rect" : [ 15.85365891456604, 1098.780514001846313, 393.0, 36.0 ],
-					"text" : "jit.gl.pass benny @fxname bloom-hq @threshold 0.7 @bloom_amt 0.15 @white_point 1.8",
+					"text" : "jit.gl.pass #1 @fxname bloom-hq @threshold 0.7 @bloom_amt 0.15 @white_point 1.8",
 					"textfile" : 					{
 						"filename" : "bloom.jxp",
 						"flags" : 0,
@@ -142,7 +142,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_gl_texture", "" ],
 					"patching_rect" : [ 16.0, 887.804899215698242, 491.0, 22.0 ],
-					"text" : "jit.gl.camera benny @cull_face 1 @antialias 1 @smooth_shading 1 @fsaa 1 @far_clip 500"
+					"text" : "jit.gl.camera #1 @cull_face 1 @antialias 1 @smooth_shading 1 @fsaa 1 @far_clip 500"
 				}
 
 			}
@@ -206,7 +206,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 10.5, 692.682943344116211, 353.0, 22.0 ],
-					"text" : "jit.gl.light benny @position 10 20 50 @lookat 0 0 0 @name light3"
+					"text" : "jit.gl.light #1 @position 10 20 50 @lookat 0 0 0 @name #0-light3"
 				}
 
 			}
@@ -219,7 +219,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 10.5, 734.146358966827393, 365.0, 36.0 ],
-					"text" : "jit.gl.light benny @position -25 -20 50 @lookat 0 0 0 @name light2 @ambient 0.23 0.21 0.22 1. @diffuse 0. 0. 0. 0."
+					"text" : "jit.gl.light #1 @position -25 -20 50 @lookat 0 0 0 @name #0-light2 @ambient 0.23 0.21 0.22 1. @diffuse 0. 0. 0. 0."
 				}
 
 			}
@@ -267,7 +267,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "jit_matrix", "jit_matrix", "" ],
 					"patching_rect" : [ 714.0, 206.0, 526.0, 22.0 ],
-					"text" : "jit.phys.multiple benny_pworld 3 @physparams position scale mass @damping 1 1 @name voice"
+					"text" : "jit.phys.multiple #2 3 @physparams position scale mass @damping 1 1 @name #0-voice"
 				}
 
 			}
@@ -315,7 +315,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "jit_matrix", "jit_matrix", "" ],
 					"patching_rect" : [ 1475.0, 206.0, 526.0, 22.0 ],
-					"text" : "jit.phys.multiple benny_pworld 3 @physparams position scale mass @damping 1 1 @name block"
+					"text" : "jit.phys.multiple #2 3 @physparams position scale mass @damping 1 1 @name #0-block"
 				}
 
 			}
@@ -351,7 +351,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 10.5, 537.0, 215.0, 22.0 ],
-					"text" : "jit.phys.picker benny_pworld @hover 1",
+					"text" : "jit.phys.picker #2 @hover 1",
 					"varname" : "physpicker"
 				}
 
@@ -388,7 +388,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 1372.0, 660.0, 708.0, 22.0 ],
-					"text" : "jit.phys.body benny_pworld @damping 1 1 @shape cube @scale 1000 1 1000 @position 0 -150 0 @name block-menu-background"
+					"text" : "jit.phys.body #2 @damping 1 1 @shape cube @scale 1000 1 1000 @position 0 -150 0 @name #0-block-menu-background"
 				}
 
 			}
@@ -554,7 +554,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "jit_matrix", "jit_matrix", "" ],
 					"patching_rect" : [ 1475.0, 541.0, 528.0, 22.0 ],
-					"text" : "jit.phys.multiple benny_pworld 3 @physparams position scale mass @damping 1 1 @name menu"
+					"text" : "jit.phys.multiple #2 3 @physparams position scale mass @damping 1 1 @name #0-menu"
 				}
 
 			}
@@ -639,7 +639,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 1475.0, 608.0, 541.0, 36.0 ],
-					"text" : "jit.gl.gridshape benny @shape cube @automatic 0 @tex_map 1 @texzoom 1 1 @texanchor 0.5 0.5 @tex_plane_s 0.5 0 0 0.5 @tex_plane_t 0 1 -0.5 -0.5"
+					"text" : "jit.gl.gridshape #1 @shape cube @automatic 0 @tex_map 1 @texzoom 1 1 @texanchor 0.5 0.5 @tex_plane_s 0.5 0 0 0.5 @tex_plane_t 0 1 -0.5 -0.5"
 				}
 
 			}
@@ -651,7 +651,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 1475.0, 576.0, 331.0, 22.0 ],
-					"text" : "jit.gl.multiple 4 benny @glparams position scale color texture"
+					"text" : "jit.gl.multiple 4 #1 @glparams position scale color texture"
 				}
 
 			}
@@ -735,7 +735,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 1475.0, 283.0, 543.0, 22.0 ],
-					"text" : "jit.gl.gridshape benny @shape cube @automatic 0 @tex_map 1 @texzoom 1 1 @texanchor 0.5 0.5"
+					"text" : "jit.gl.gridshape #1 @shape cube @automatic 0 @tex_map 1 @texzoom 1 1 @texanchor 0.5 0.5"
 				}
 
 			}
@@ -747,7 +747,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 1475.0, 248.0, 331.0, 22.0 ],
-					"text" : "jit.gl.multiple 4 benny @glparams position scale color texture"
+					"text" : "jit.gl.multiple 4 #1 @glparams position scale color texture"
 				}
 
 			}
@@ -759,7 +759,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 8.0, 433.0, 648.0, 22.0 ],
-					"text" : "jit.phys.body benny_pworld @damping 1 1 @shape cube @scale 10000 10000 1 @position 0 0 -10 @name background"
+					"text" : "jit.phys.body #2 @damping 1 1 @shape cube @scale 10000 10000 1 @position 0 0 -10 @name #0-background"
 				}
 
 			}
@@ -842,7 +842,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 714.0, 539.0, 277.0, 22.0 ],
-					"text" : "jit.gl.gridshape benny @shape cube @automatic 0"
+					"text" : "jit.gl.gridshape #1 @shape cube @automatic 0"
 				}
 
 			}
@@ -854,7 +854,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 714.0, 507.0, 291.0, 22.0 ],
-					"text" : "jit.gl.multiple 3 benny @glparams position scale color"
+					"text" : "jit.gl.multiple 3 #1 @glparams position scale color"
 				}
 
 			}
@@ -926,7 +926,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 714.0, 318.0, 277.0, 22.0 ],
-					"text" : "jit.gl.gridshape benny @shape cube @automatic 0"
+					"text" : "jit.gl.gridshape #1 @shape cube @automatic 0"
 				}
 
 			}
@@ -938,7 +938,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 714.0, 286.0, 291.0, 22.0 ],
-					"text" : "jit.gl.multiple 3 benny @glparams position scale color"
+					"text" : "jit.gl.multiple 3 #1 @glparams position scale color"
 				}
 
 			}
@@ -974,7 +974,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "jit_matrix", "jit_matrix", "" ],
 					"patching_rect" : [ 8.0, 296.0, 578.0, 22.0 ],
-					"text" : "jit.phys.multiple benny_pworld 4 @physparams position rotatexyz scale mass @damping 1 1 @name wires"
+					"text" : "jit.phys.multiple #2 4 @physparams position rotatexyz scale mass @damping 1 1 @name #0-wires"
 				}
 
 			}
@@ -986,7 +986,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 10.5, 496.0, 320.0, 22.0 ],
-					"text" : "jit.phys.world benny_pworld @dynamics 0 @drawto benny"
+					"text" : "jit.phys.world #2 @dynamics 0 @drawto #1"
 				}
 
 			}
@@ -1071,7 +1071,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 8.0, 351.0, 325.0, 22.0 ],
-					"text" : "jit.gl.multiple 4 benny @glparams position rotate scale color"
+					"text" : "jit.gl.multiple 4 #1 @glparams position rotate scale color"
 				}
 
 			}
@@ -1083,7 +1083,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 8.0, 395.0, 335.0, 22.0 ],
-					"text" : "jit.gl.gridshape benny @shape plane @dim 2 2 @automatic 0"
+					"text" : "jit.gl.gridshape #1 @shape plane @dim 2 2 @automatic 0"
 				}
 
 			}
