@@ -93,7 +93,7 @@
 			"audio_clock_out" : 			{
 				"enable" : 1,
 				"ppqn" : 4,
-				"channel" : 30
+				"channel" : 8
 			}
 
 		}
@@ -220,6 +220,21 @@
 			"talk_in" : 0,
 			"midi_handler" : "generic.hardware.midi.handler",
 			"midi_in" : "Shuttle Control v4.0",
+			"parameters" : [ 				{
+					"name" : "n-decay",
+					"cc_channel" : 2,
+					"cc_number" : 1,
+					"values" : [ "uni", 0, 127, "lin" ],
+					"type" : "int"
+				}
+, 				{
+					"name" : "n-freq",
+					"cc_channel" : 2,
+					"cc_number" : 2,
+					"values" : [ "uni", 0, 127, "lin" ],
+					"type" : "int"
+				}
+ ],
 			"connections" : 			{
 				"in" : 				{
 					"midi" : [ "notein" ],
@@ -235,22 +250,7 @@
 				}
 
 			}
-,
-			"parameters" : [ 				{
-					"name" : "n-decay",
-					"cc_channel" : 2,
-					"cc_number" : 1,
-					"values" : [ "uni", 0, 127, "lin" ],
-					"type" : "int"
-				}
-, 				{
-					"name" : "n-freq",
-					"cc_channel" : 2,
-					"cc_number" : 2,
-					"values" : [ "uni", 0, 127, "lin" ],
-					"type" : "int"
-				}
- ]
+
 		}
 ,
 		"hardware.Metals" : 		{
@@ -264,20 +264,6 @@
 			"talk_in" : 0,
 			"midi_handler" : "generic.hardware.midi.handler",
 			"midi_in" : "Shuttle Control v4.0",
-			"connections" : 			{
-				"in" : 				{
-					"midi" : [ "metal1" ],
-					"midi_channels" : [ 3 ],
-					"midi_ranges" : [ [ 0, 127 ] ]
-				}
-,
-				"out" : 				{
-					"hardware" : [ "out" ],
-					"hardware_channels" : [ 3 ]
-				}
-
-			}
-,
 			"parameters" : [ 				{
 					"name" : "param1",
 					"cc_channel" : 3,
@@ -306,7 +292,21 @@
 					"values" : [ "uni", 0, 127, "lin" ],
 					"type" : "int"
 				}
- ]
+ ],
+			"connections" : 			{
+				"in" : 				{
+					"midi" : [ "metal1" ],
+					"midi_channels" : [ 3 ],
+					"midi_ranges" : [ [ 0, 127 ] ]
+				}
+,
+				"out" : 				{
+					"hardware" : [ "out" ],
+					"hardware_channels" : [ 3 ]
+				}
+
+			}
+
 		}
 ,
 		"hardware.Metal2" : 		{
@@ -541,6 +541,30 @@
 				"out" : 				{
 					"hardware" : [ "out" ],
 					"hardware_channels" : [ 20 ]
+				}
+
+			}
+
+		}
+,
+		"hardware.LPG_2" : 		{
+			"type" : "hardware",
+			"substitute" : [  ],
+			"max_polyphony" : 1,
+			"help_text" : "low pass gate",
+			"exclusive" : 0,
+			"click_out" : 0,
+			"cue_out" : 0,
+			"talk_in" : 0,
+			"connections" : 			{
+				"in" : 				{
+					"hardware" : [ "audio_in", "cv_in" ],
+					"hardware_channels" : [ 22, 21 ]
+				}
+,
+				"out" : 				{
+					"hardware" : [ "out" ],
+					"hardware_channels" : [ 21 ]
 				}
 
 			}
