@@ -1,5 +1,95 @@
 outlets = 0;
 
+var config_gl_fsaa = 1;
+var config_gl_fsaa_arm = null;
+var config_target_fps = [30, 5];
+var config_target_fps_arm = null;
+var apple_silicon_hint = "auto";
+var GL_FSAA = 1;
+var FPS_IDLE_AFTER_FRAMES = 120;
+var idle_frame_counter = 0;
+var fps_state = "active";
+var am_foreground = 1;
+var is_apple_silicon = 0;
+
+function set_fps_state(desiredState, force){
+        var nextState = desiredState;
+        if(!am_foreground){
+                nextState = "background";
+        }else if((desiredState !== "idle") && (desiredState !== "background")){
+                nextState = "active";
+        }else if(desiredState === "background"){
+                nextState = "active";
+        }
+        if(nextState !== "idle" && nextState !== "background"){
+                nextState = "active";
+        }
+        if((!force) && (fps_state === nextState)){
+                return;
+        }
+        fps_state = nextState;
+        if((world != null) && Array.isArray(TARGET_FPS) && TARGET_FPS.length){
+                var index = (fps_state === "active") ? 0 : Math.min(1, TARGET_FPS.length - 1);
+                world.message("fps", TARGET_FPS[index]);
+        }
+}
+
+function resolve_graphics_profile(){
+        var nextFsaa = config_gl_fsaa;
+        var nextFps = config_target_fps;
+        if(is_apple_silicon){
+                if(config_gl_fsaa_arm !== null){
+                        nextFsaa = config_gl_fsaa_arm;
+                }
+                if(config_target_fps_arm !== null){
+                        nextFps = config_target_fps_arm;
+                }
+        }
+        var normalisedFps;
+        if(Array.isArray(nextFps)){
+                normalisedFps = nextFps.slice();
+        }else if(typeof nextFps === "number"){
+                normalisedFps = [nextFps];
+        }else{
+                normalisedFps = [30, 5];
+        }
+        TARGET_FPS = normalisedFps;
+        GL_FSAA = nextFsaa;
+        if(world != null){
+                world.message("fsaa", GL_FSAA);
+        }
+        set_fps_state(fps_state, 1);
+}
+
+function update_idle_fps(activityDetected){
+        if(!am_foreground){
+                idle_frame_counter = 0;
+                return;
+        }
+        if((FPS_IDLE_AFTER_FRAMES <= 0) || (!Array.isArray(TARGET_FPS)) || (TARGET_FPS.length < 2)){
+                idle_frame_counter = 0;
+                if(fps_state !== "active"){
+                        set_fps_state("active");
+                }
+                return;
+        }
+        if(activityDetected){
+                if(idle_frame_counter !== 0){
+                        idle_frame_counter = 0;
+                }
+                if(fps_state !== "active"){
+                        set_fps_state("active");
+                }
+        }else{
+                if(idle_frame_counter < FPS_IDLE_AFTER_FRAMES){
+                        idle_frame_counter++;
+                }
+                if(idle_frame_counter >= FPS_IDLE_AFTER_FRAMES){
+                        set_fps_state("idle");
+                }
+        }
+}
+
 include("init_functions.js");
 include("display_pages.js");
 include("files.js");
@@ -652,7 +742,7 @@ var redraw_flag = {
 	selective : 0
 }
 
-var am_foreground = 1; //other windows will message to say they want keyboard not to go to benny, this flags that.
+// am_foreground is initialised near the top of the file.
 
 var paramslider_details = []; //indexed by param number
 //x1,y1,x2,y2,r,g,b,mouse_index,block,curp,flags,namearr,namelabely,p_type,wrap,block_name,h_slider,gets-overwritten-with-y-coord-returned(bottom),click_to_set
@@ -891,18 +981,19 @@ function cpu(avg,peak,fps){
 }
 
 function other_window_active(a){
-	if(!Array.isArray(TARGET_FPS)){
-		am_foreground = 1;
-		return 0;
-	}
-	if(world == null) return 0;
-	if(a == 1){
-		am_foreground = 0;
-		world.message("fps", TARGET_FPS[1]);
-	}else{
-		am_foreground = 1;
-		world.message("fps", TARGET_FPS[0]);
-	}
+        if(world == null) return 0;
+        if(a == 1){
+                am_foreground = 0;
+                idle_frame_counter = 0;
+                set_fps_state("background", 1);
+        }else{
+                am_foreground = 1;
+                if((FPS_IDLE_AFTER_FRAMES > 0) && (idle_frame_counter >= FPS_IDLE_AFTER_FRAMES)){
+                        set_fps_state("idle", 1);
+                }else{
+                        set_fps_state("active", 1);
+                }
+        }
 }
 
 function outputfx(type, number, value){

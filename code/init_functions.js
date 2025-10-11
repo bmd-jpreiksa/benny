@@ -86,14 +86,25 @@ function loadbang(){
 }
 
 function systemtypeis(type){
-	if(type!="windows"){
-		post("\ndetected macos, noting small differences")
-		config.replace("consolevsts::bus", "Console7Buss");
-		config.replace("consolevsts::channel", "Console7Channel");
-		config.replace("consolevsts::cascade", "Console7Cascade");
-		config.replace("consolevsts::crunch", "Console7Crunch");
-		config.replace("consolevsts::tape", "totape6");
-	}
+        var platform = (type==null) ? "" : type.toString();
+        var lower = platform.toLowerCase();
+        if(lower != "windows"){
+                post("\ndetected macos, noting small differences");
+                config.replace("consolevsts::bus", "Console7Buss");
+                config.replace("consolevsts::channel", "Console7Channel");
+                config.replace("consolevsts::cascade", "Console7Cascade");
+                config.replace("consolevsts::crunch", "Console7Crunch");
+                config.replace("consolevsts::tape", "totape6");
+        }
+        var hint = (apple_silicon_hint || "auto").toLowerCase();
+        if(hint === "on"){
+                is_apple_silicon = 1;
+        }else if(hint === "off"){
+                is_apple_silicon = 0;
+        }else{
+                is_apple_silicon = (lower.indexOf("arm") !== -1) || (lower.indexOf("aarch") !== -1) || (lower.indexOf("silicon") !== -1);
+        }
+        resolve_graphics_profile();
 }
 
 function initialise_reset(hardware_file){
@@ -316,10 +327,50 @@ function read_settings_from_config() {
 	waves_preloading = config.get("waves_preloading");
 	MODULATION_IN_PARAMETERS_VIEW = config.get("MODULATION_IN_PARAMETERS_VIEW");
 	AUTOZOOM_ON_SELECT = config.get("AUTOZOOM_ON_SELECT");
-	SHOW_STATES_ON_PANELS = config.get("SHOW_STATES_ON_PANELS");
-	SHOW_KEYBOARD_AUTOMAP_CONNECT_BUTTON = config.get("SHOW_KEYBOARD_AUTOMAP_CONNECT_BUTTON");
-	TARGET_FPS = config.get("TARGET_FPS");
-	METER_TINT = config.get("METER_TINT");
+        SHOW_STATES_ON_PANELS = config.get("SHOW_STATES_ON_PANELS");
+        SHOW_KEYBOARD_AUTOMAP_CONNECT_BUTTON = config.get("SHOW_KEYBOARD_AUTOMAP_CONNECT_BUTTON");
+        var baseTargetFps = config.get("TARGET_FPS");
+        if(Array.isArray(baseTargetFps)){
+                config_target_fps = baseTargetFps.slice();
+        }else{
+                config_target_fps = baseTargetFps;
+        }
+        if(config.contains("TARGET_FPS_APPLE_SILICON")){
+                var armTargetFps = config.get("TARGET_FPS_APPLE_SILICON");
+                if(Array.isArray(armTargetFps)){
+                        config_target_fps_arm = armTargetFps.slice();
+                }else{
+                        config_target_fps_arm = armTargetFps;
+                }
+        }else{
+                config_target_fps_arm = null;
+        }
+        if(config.contains("GL_FSAA")){
+                var fsaaValue = parseInt(config.get("GL_FSAA"), 10);
+                if(isNaN(fsaaValue) || (fsaaValue < 0)) fsaaValue = 0;
+                config_gl_fsaa = fsaaValue;
+        }else{
+                config_gl_fsaa = 1;
+        }
+        if(config.contains("GL_FSAA_APPLE_SILICON")){
+                var fsaaArmValue = parseInt(config.get("GL_FSAA_APPLE_SILICON"), 10);
+                if(isNaN(fsaaArmValue) || (fsaaArmValue < 0)) fsaaArmValue = 0;
+                config_gl_fsaa_arm = fsaaArmValue;
+        }else{
+                config_gl_fsaa_arm = null;
+        }
+        if(config.contains("FPS_IDLE_AFTER_FRAMES")){
+                var idleFrames = parseInt(config.get("FPS_IDLE_AFTER_FRAMES"), 10);
+                if(isNaN(idleFrames) || (idleFrames < 0)) idleFrames = 0;
+                FPS_IDLE_AFTER_FRAMES = idleFrames;
+        }
+        if(config.contains("APPLE_SILICON_HINT")){
+                apple_silicon_hint = (config.get("APPLE_SILICON_HINT").toString()).toLowerCase();
+        }else{
+                apple_silicon_hint = "auto";
+        }
+        resolve_graphics_profile();
+        METER_TINT = config.get("METER_TINT");
 	SELECTED_BLOCK_Z_MOVE = config.get("SELECTED_BLOCK_Z_MOVE");
 	SELECTED_BLOCK_DEPENDENTS_Z_MOVE = config.get("SELECTED_BLOCK_DEPENDENTS_Z_MOVE");
 	sidebar.scopes.midinames = config.get("SIDEBAR_MIDI_SCOPE_NOTE_NAMES");
@@ -336,8 +387,8 @@ function initialise_graphics() {
 	world.message("sendrender", "smooth_shading", 1);
 	world.message("esc_fullscreen", 0);
 	world.message("fsmenubar", 0);
-	world.message("fsaa", 1);
-	world.message("fps", TARGET_FPS[0]);
+        world.message("fsaa", GL_FSAA);
+        set_fps_state("active", 1);
 	world.message("visible", 1);
 	if(config.contains("START_FULLSCREEN")&&(config.get("START_FULLSCREEN")==1)){
 		fullscreen = 1;
